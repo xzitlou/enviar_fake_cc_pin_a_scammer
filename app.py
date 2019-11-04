@@ -3,9 +3,13 @@ import random
 import requests
 
 
+def generate_x_rand_numbers(qty):
+    return [str(random.randint(0, 9)) for c in range(0, qty)]
+
+
 def generate_random_card():
     card_prefix = ['45', '44', '42']
-    rand_card_sufix = [str(random.randint(0, 9)) for c in range(0, 14)]
+    rand_card_sufix = generate_x_rand_numbers(14)
     card_number = '%s%s' % (
         random.choice(card_prefix),
         ''.join(rand_card_sufix)
@@ -15,11 +19,11 @@ def generate_random_card():
 
 
 def generate_random_pin():
-    return ''.join(str(random.randint(0, 9)) for i in range(0, 6))
+    return ''.join(generate_x_rand_numbers(6))
 
 
 def generate_random_dni():
-    rand_dni_sufix = [str(random.randint(0, 9)) for c in range(0, 7)]
+    rand_dni_sufix = generate_x_rand_numbers(7)
     card_number = '4%s' % ''.join(rand_dni_sufix)
 
     return card_number
